@@ -6,15 +6,58 @@ import {
     TreeItem,
 } from "../../components/TreeMenu/TreeMenu.util";
 import Modal from "../../components/Modal/Modal";
+import ModalNotification, {
+    NotificationContext,
+} from "../../components/ModalNotification/ModalNotification";
+
+enum ModalType {
+    Popup = 0,
+    Notification = 1,
+}
 
 const Part2 = () => {
-    const [modelContent, setModelContent] = React.useState<string>("");
+    return (
+        <ModalNotification dismissInMillisec={3000}>
+            <Part2InnerContent />
+        </ModalNotification>
+    );
+};
+
+const Part2InnerContent = () => {
+    // For Popup modal
+    const [modalContent, setModalContent] = React.useState<string>("");
+    // For Notification modal
+    const { pushNotification } = React.useContext(NotificationContext);
+    const [modalType, setModalType] = React.useState<ModalType>(
+        ModalType.Notification
+    );
     const onModelClose = () => {
-        setModelContent("");
+        setModalContent("");
     };
 
     const onTreeItemClick = (item: TreeItem) => {
-        setModelContent(item.name);
+        switch (modalType) {
+            case ModalType.Popup:
+                setModalContent(item.name);
+                break;
+            case ModalType.Notification:
+                pushNotification(item.name);
+                break;
+        }
+    };
+
+    const renderModal = () => {
+        switch (modalType) {
+            case ModalType.Popup:
+                return (
+                    <Modal
+                        title={"Tree Item Name"}
+                        content={modalContent}
+                        isOpen={modalContent !== ""}
+                        onClose={onModelClose}
+                    />
+                );
+        }
     };
 
     return (
@@ -23,15 +66,9 @@ const Part2 = () => {
             <TreeMenu
                 root={TREE_MOCK_DATA}
                 collapseSiblingOnExpand={true}
-                collapseSiblingSubFolderOnExpand={false}
                 onTreeItemClick={onTreeItemClick}
             />
-            <Modal
-                title={"Tree Item Name"}
-                content={modelContent}
-                isOpen={modelContent !== ""}
-                onClose={onModelClose}
-            />
+            {renderModal()}
         </div>
     );
 };
