@@ -4,6 +4,10 @@ export interface TreeMenuBaseStyledProps {
     isExpand: boolean;
 }
 
+interface TreeItemStyledProps {
+    isSelected?: boolean;
+}
+
 export interface TreeMenuIconProps {
     iconContent: string;
     isExpand: boolean;
@@ -45,4 +49,8 @@ export const StyledArrow = styled.div<TreeMenuIconProps>`
         );
         transition: transform 0.2s ease;
     }
+`;
+
+export const StyledTreeNameContainer = styled.div<TreeItemStyledProps>`
+    font-weight: ${(props) => (props.isSelected ? "bold" : "normal")};
 `;

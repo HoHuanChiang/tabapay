@@ -1,6 +1,5 @@
 import React from "react";
-import { StyledOuterContainer } from "./MainContext.styled";
-import { StyledRow } from "../Part3.styled";
+import { StyledOuterContainer, StyledRow } from "./MainContext.styled";
 import { useParams } from "react-router-dom";
 import { Part3RouteParams } from "../Part3";
 import {

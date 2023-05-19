@@ -9,8 +9,8 @@ import {
     StyledSubFolderContainer,
     StyledTreeRow,
     StyledArrow,
+    StyledTreeNameContainer,
 } from "./TreeMenu.styled";
-import { StyledTreeNameContainer } from "../../parts/part3/Part3.styled";
 
 interface TreeMenuProps {
     root: TreeFolder;

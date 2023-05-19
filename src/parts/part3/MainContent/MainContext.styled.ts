@@ -7,3 +7,12 @@ export const StyledOuterContainer = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+export const StyledRow = styled.div`
+    margin: 10px 0;
+
+    & > span {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+`;
