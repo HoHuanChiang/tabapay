@@ -5,6 +5,7 @@ import {
     StyledTreeRow,
     StyledArrow,
 } from "./TreeMenu.styled";
+import Modal from "../Modal/Modal";
 
 interface TreeMenuProps {
     root: TreeFolder;
@@ -14,6 +15,7 @@ interface TreeMenuProps {
 
 const TreeMenu = (props: TreeMenuProps) => {
     const [rootFolder, setRootFolder] = React.useState<TreeFolder>(props.root);
+    const [modelContent, setModelContent] = React.useState<string>("");
 
     const onTreeFolderItemClick = (paths: number[]) => {
         const copyRootFolder = { ...rootFolder };
@@ -53,6 +55,14 @@ const TreeMenu = (props: TreeMenuProps) => {
         });
     };
 
+    const onModelClose = () => {
+        setModelContent("");
+    };
+
+    const onTreeItemClick = (name: string) => {
+        setModelContent(name);
+    };
+
     const renderTreeFolder = (
         folder: TreeFolder,
         depth: number,
@@ -72,7 +82,9 @@ const TreeMenu = (props: TreeMenuProps) => {
                     <div>
                         {folder.items?.map((item) => {
                             return (
-                                <StyledTreeRow>
+                                <StyledTreeRow
+                                    onClick={() => onTreeItemClick(item.name)}
+                                >
                                     <StyledArrow
                                         isExpand={folder.isExpand}
                                         iconContent={"◉"}
@@ -97,7 +109,17 @@ const TreeMenu = (props: TreeMenuProps) => {
         );
     };
 
-    return renderTreeFolder(rootFolder, 0, []);
+    return (
+        <div>
+            {renderTreeFolder(rootFolder, 0, [])}
+            <Modal
+                title={"Tree Item Name"}
+                content={modelContent}
+                isOpen={modelContent !== ""}
+                onClose={onModelClose}
+            />
+        </div>
+    );
 };
 
 export default TreeMenu;

@@ -96,5 +96,3 @@ export const TREE_MOCK_DATA: TreeFolder = {
         },
     ],
 };
-
-const createTreeFolder = (name: string) => {};
