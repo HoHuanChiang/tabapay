@@ -1,20 +1,36 @@
 import React from "react";
-import { TreeFolder, TreeItem } from "./TreeMenu.util";
+import {
+    ExpandTree,
+    HighlightSelectedTreeItem,
+    TreeFolder,
+    TreeItem,
+} from "./TreeMenu.util";
 import {
     StyledSubFolderContainer,
     StyledTreeRow,
     StyledArrow,
 } from "./TreeMenu.styled";
+import { StyledTreeNameContainer } from "../../parts/part3/Part3.styled";
 
 interface TreeMenuProps {
     root: TreeFolder;
     collapseSiblingOnExpand?: boolean;
     collapseSiblingSubFolderOnExpand?: boolean;
     onTreeItemClick?: (item: TreeItem) => void;
+    highlightOnTreeItemClick?: boolean;
+    initialSelectedTreeItemId?: number;
 }
 
 const TreeMenu = (props: TreeMenuProps) => {
     const [rootFolder, setRootFolder] = React.useState<TreeFolder>(props.root);
+
+    React.useEffect(() => {
+        if (props.initialSelectedTreeItemId) {
+            const copyRootFolder = { ...rootFolder };
+            ExpandTree(copyRootFolder, props.initialSelectedTreeItemId);
+            setRootFolder(copyRootFolder);
+        }
+    }, [props.initialSelectedTreeItemId]);
 
     const onTreeFolderItemClick = (paths: number[]) => {
         const copyRootFolder = { ...rootFolder };
@@ -55,6 +71,10 @@ const TreeMenu = (props: TreeMenuProps) => {
     };
 
     const onTreeItemClick = (item: TreeItem) => {
+        if (props.highlightOnTreeItemClick) {
+            const updatedTree = HighlightSelectedTreeItem(rootFolder, item.id);
+            setRootFolder(updatedTree);
+        }
         props.onTreeItemClick?.(item);
     };
 
@@ -85,7 +105,11 @@ const TreeMenu = (props: TreeMenuProps) => {
                                         iconContent={"◉"}
                                         expandOnRotate={true}
                                     />
-                                    {item.name}
+                                    <StyledTreeNameContainer
+                                        isSelected={item.isSelected}
+                                    >
+                                        {item.name}
+                                    </StyledTreeNameContainer>
                                 </StyledTreeRow>
                             );
                         })}
