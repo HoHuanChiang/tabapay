@@ -1,21 +1,20 @@
 import React from "react";
-import { TreeFolder } from "./TreeMenu.util";
+import { TreeFolder, TreeItem } from "./TreeMenu.util";
 import {
     StyledSubFolderContainer,
     StyledTreeRow,
     StyledArrow,
 } from "./TreeMenu.styled";
-import Modal from "../Modal/Modal";
 
 interface TreeMenuProps {
     root: TreeFolder;
     collapseSiblingOnExpand?: boolean;
     collapseSiblingSubFolderOnExpand?: boolean;
+    onTreeItemClick?: (item: TreeItem) => void;
 }
 
 const TreeMenu = (props: TreeMenuProps) => {
     const [rootFolder, setRootFolder] = React.useState<TreeFolder>(props.root);
-    const [modelContent, setModelContent] = React.useState<string>("");
 
     const onTreeFolderItemClick = (paths: number[]) => {
         const copyRootFolder = { ...rootFolder };
@@ -55,12 +54,8 @@ const TreeMenu = (props: TreeMenuProps) => {
         });
     };
 
-    const onModelClose = () => {
-        setModelContent("");
-    };
-
-    const onTreeItemClick = (name: string) => {
-        setModelContent(name);
+    const onTreeItemClick = (item: TreeItem) => {
+        props.onTreeItemClick?.(item);
     };
 
     const renderTreeFolder = (
@@ -83,7 +78,7 @@ const TreeMenu = (props: TreeMenuProps) => {
                         {folder.items?.map((item) => {
                             return (
                                 <StyledTreeRow
-                                    onClick={() => onTreeItemClick(item.name)}
+                                    onClick={() => onTreeItemClick(item)}
                                 >
                                     <StyledArrow
                                         isExpand={folder.isExpand}
@@ -109,17 +104,7 @@ const TreeMenu = (props: TreeMenuProps) => {
         );
     };
 
-    return (
-        <div>
-            {renderTreeFolder(rootFolder, 0, [])}
-            <Modal
-                title={"Tree Item Name"}
-                content={modelContent}
-                isOpen={modelContent !== ""}
-                onClose={onModelClose}
-            />
-        </div>
-    );
+    return renderTreeFolder(rootFolder, 0, []);
 };
 
 export default TreeMenu;
