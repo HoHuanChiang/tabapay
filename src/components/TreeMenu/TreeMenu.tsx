@@ -26,14 +26,14 @@ const TreeMenu = (props: TreeMenuProps) => {
 
     React.useEffect(() => {
         if (props.initialSelectedTreeItemId) {
-            const copyRootFolder = { ...rootFolder };
+            const copyRootFolder = deepCopy(rootFolder);
             ExpandTree(copyRootFolder, props.initialSelectedTreeItemId);
             setRootFolder(copyRootFolder);
         }
     }, [props.initialSelectedTreeItemId]);
 
     const onTreeFolderItemClick = (paths: number[]) => {
-        const copyRootFolder = { ...rootFolder };
+        const copyRootFolder = deepCopy(rootFolder);
         let currentTreeFolder: TreeFolder | undefined = copyRootFolder;
         let siblingItems: TreeFolder[] | undefined;
         paths.forEach((path, index) => {
@@ -61,6 +61,10 @@ const TreeMenu = (props: TreeMenuProps) => {
             currentTreeFolder.isExpand = !currentTreeFolder.isExpand;
             setRootFolder(copyRootFolder);
         }
+    };
+
+    const deepCopy = (treeFolder: TreeFolder): TreeFolder => {
+        return JSON.parse(JSON.stringify(treeFolder));
     };
 
     const onRecursiveCollapse = (folder: TreeFolder) => {

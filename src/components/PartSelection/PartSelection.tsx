@@ -19,6 +19,9 @@ const PartSelection = () => {
                 <Link to="/part3">
                     <StyledLinkContainer>Part 3</StyledLinkContainer>
                 </Link>
+                <Link to="/part4">
+                    <StyledLinkContainer>Part 4</StyledLinkContainer>
+                </Link>
             </StyledLinkGroupContainer>
         </StyledOuterContainer>
     );

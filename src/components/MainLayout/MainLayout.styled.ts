@@ -15,7 +15,24 @@ export const StyledMainHeaderContainer = styled.div<MainLayoutStyledProps>`
     top: 0;
     left: 0;
     width: 100%;
-    display: ${(props) => (props.showHeaderFooter ? "block" : "none")};
+    display: ${(props) => (props.showHeaderFooter ? "flex" : "none")};
+    border-bottom: 1px solid black;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        height: 100%;
+        object-fit: contain;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 20px;
+    }
+
+    span {
+        font-weight: bold;
+        font-size: 20px;
+    }
 `;
 
 export const StyledMainNavigationContainer = styled.div<MainLayoutStyledProps>`
@@ -48,5 +65,16 @@ export const StyledMainFooterContainer = styled.div<MainLayoutStyledProps>`
     left: 0;
     height: 60px;
     width: 100%;
-    display: ${(props) => (props.showHeaderFooter ? "block" : "none")};
+    display: ${(props) => (props.showHeaderFooter ? "flex" : "none")};
+    border-top: 1px solid black;
+    align-items: center;
+    justify-content: center;
+
+    &>span: first-of-type {
+        font-weight: bold;
+    }
+
+    & > span {
+        margin: 0 20px;
+    }
 `;
