@@ -19,6 +19,8 @@ export const StyledMainHeaderContainer = styled.div<MainLayoutStyledProps>`
     border-bottom: 1px solid black;
     align-items: center;
     justify-content: center;
+    background: white;
+    z-index: 2;
 
     img {
         height: 100%;
@@ -51,12 +53,9 @@ export const StyledMainContentContainer = styled.div<MainLayoutStyledProps>`
     box-sizing: border-box;
     margin-top: ${(props) => (props.showHeaderFooter ? "60px" : "0")};
     margin-left: 300px;
-    margin-bottom: ${(props) => (props.showHeaderFooter ? "60px" : "0")};
     min-height: ${(props) =>
         props.showHeaderFooter ? "calc(100vh - 120px)" : "100vh"};
-    padding: 20px;
     position: relative;
-    height: 1px;
 `;
 
 export const StyledMainFooterContainer = styled.div<MainLayoutStyledProps>`
@@ -69,6 +68,8 @@ export const StyledMainFooterContainer = styled.div<MainLayoutStyledProps>`
     border-top: 1px solid black;
     align-items: center;
     justify-content: center;
+    background: white;
+    z-index: 2;
 
     &>span: first-of-type {
         font-weight: bold;
