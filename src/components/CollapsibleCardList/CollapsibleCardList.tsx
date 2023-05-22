@@ -2,12 +2,12 @@ import React from "react";
 import CollapsibleCard, {
     CollapsibleCardProps,
 } from "./CollapsibleCard/CollapsibleCard";
-import { CollapsibleCardInfo } from "./CollapsibleCard/CollapsibleCard.util";
+import { CardInfo } from "./CollapsibleCard/CollapsibleCard.util";
 import { StyledCardsContainer } from "./CollapsibleCardList.styled";
 import { convertToCollapsibleCardProps } from "./CollapsibleCardList.util";
 
 interface CollapsibleCardListProps {
-    cards: CollapsibleCardInfo[];
+    cards: CardInfo[];
     collapseSiblingCardsOnHeaderClick?: boolean;
 }
 

@@ -1,9 +1,10 @@
-export interface CollapsibleCardInfo {
+export interface CardInfo {
+    id?: number;
     headerName: string;
     content: string | JSX.Element;
 }
 
-export const CARDS_MOCK_DATA: CollapsibleCardInfo[] = [
+export const CARDS_MOCK_DATA: CardInfo[] = [
     {
         headerName: "Category 1",
         content:
