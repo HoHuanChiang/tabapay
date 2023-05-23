@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Part3 from "./parts/part3/Part3";
 import Part4 from "./parts/part4/Part4";
 import Part5 from "./parts/part5/Part5";
+import Part6 from "./parts/part6/part6";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/part3/:treeItemId?" element={<Part3 />} />
                 <Route path="/part4/:treeItemId?" element={<Part4 />} />
                 <Route path="/part5/:treeItemId?" element={<Part5 />} />
+                <Route path="/part6/:treeItemId?" element={<Part6 />} />
             </Routes>
         </div>
     );

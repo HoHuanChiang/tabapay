@@ -1,3 +1,5 @@
+import { Destination, Folder } from "../../api/api.models";
+
 export interface TreeItem {
     id: number;
     name: string;
@@ -166,4 +168,25 @@ export const ExpandTree = (folder: TreeFolder, treeItemId: number) => {
         }
     }
     return false;
+};
+
+export const ConvertToTreeFolder = (folder: Folder): TreeFolder => {
+    return {
+        name: folder.name,
+        isExpand: false,
+        subFolders: folder.subFolders?.map((subFolder) =>
+            ConvertToTreeFolder(subFolder)
+        ),
+        items: folder.destinations.map((destination) =>
+            ConvertToTreeItem(destination)
+        ),
+    };
+};
+
+export const ConvertToTreeItem = (destination: Destination): TreeItem => {
+    return {
+        id: destination.id,
+        name: destination.name,
+        isSelected: false,
+    };
 };

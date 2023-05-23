@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 
 interface MainLayoutProps {
     showHeaderFooter?: boolean;
-    mainContent: JSX.Element;
-    navContent: JSX.Element;
+    mainContent?: JSX.Element;
+    navContent?: JSX.Element;
 }
 
 const MainLayout = (props: MainLayoutProps) => {
