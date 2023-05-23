@@ -34,3 +34,7 @@ export const APIRequest = {
     getDestinationDetailsApiPath: (destinationId: number) =>
         getData<Destination>(getDestinationDetailsApiPath(destinationId)),
 };
+
+export const GetImageUrl = (imageName: string) => {
+    return `${API_ENDPOINT_BASE_URL}/image/${imageName}`;
+};

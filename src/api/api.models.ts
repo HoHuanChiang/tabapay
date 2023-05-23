@@ -17,4 +17,5 @@ export interface Location {
     address: string;
     description: string;
     website: string;
+    imageUrls: string[];
 }

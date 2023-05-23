@@ -1,7 +1,8 @@
 export interface CardInfo {
     id?: number;
     headerName: string;
-    content: string | JSX.Element;
+    content?: string | JSX.Element;
+    data?: any;
 }
 
 export const CARDS_MOCK_DATA: CardInfo[] = [

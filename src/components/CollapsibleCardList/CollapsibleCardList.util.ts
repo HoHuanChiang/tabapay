@@ -8,7 +8,7 @@ export const convertToCollapsibleCardProps = (
         return {
             id: card.id ?? index,
             headerName: card.headerName,
-            content: card.content,
+            content: card.content ?? "",
             isOpen: false,
         };
     });

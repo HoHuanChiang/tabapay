@@ -10,25 +10,32 @@ import { assignIdtoCards } from "./SelectionCard.util";
 
 interface SelectionCardProps {
     cards: CardInfo[];
+    onHeaderClick?: (card: CardInfo) => void;
+    onRenderContent?: (card: CardInfo) => JSX.Element;
 }
 
 const SelectionCard = (props: SelectionCardProps) => {
-    const [cards, setCards] = React.useState<CardInfo[]>(
-        assignIdtoCards(props.cards)
-    );
+    const [cards, setCards] = React.useState<CardInfo[]>();
     const [selectedCardId, setSelectedCardId] = React.useState<number>();
 
-    const onCategoryHeaderClick = (cardId?: number) => {
-        if (cardId) {
-            setSelectedCardId(cardId);
+    React.useEffect(() => {
+        setCards(assignIdtoCards(props.cards));
+        if (props.cards.length > 0) {
+            setSelectedCardId(props.cards[0].id);
         }
+    }, [JSON.stringify(props.cards)]);
+
+    const onCategoryHeaderClick = (card: CardInfo) => {
+        setSelectedCardId(card.id ?? 0);
+        props.onHeaderClick?.({ ...card });
     };
 
     const renderNavbar = () => {
-        return cards.map((card) => {
+        return cards?.map((card, index) => {
             return (
                 <StyledSelectionNarbarItem
-                    onClick={() => onCategoryHeaderClick(card.id)}
+                    key={index}
+                    onClick={() => onCategoryHeaderClick(card)}
                     isSelected={selectedCardId === card.id}
                 >
                     {card.headerName}
@@ -41,8 +48,15 @@ const SelectionCard = (props: SelectionCardProps) => {
         if (!selectedCardId) {
             return "Please select a category";
         }
-        const foundCard = cards.find((x) => x.id === selectedCardId);
-        return foundCard?.content ?? "No data found";
+        const foundCard = cards?.find((x) => x.id === selectedCardId);
+        if (foundCard) {
+            if (props.onRenderContent) {
+                return props.onRenderContent(foundCard);
+            }
+            return foundCard.content;
+        }
+
+        return "No Data Found";
     };
 
     return (
