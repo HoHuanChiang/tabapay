@@ -10,6 +10,7 @@ export const StyledToggleContainer = styled.div`
     position: relative;
     display: flex;
     align-items: center;
+    margin: 5px 0;
 `;
 
 export const StyledLabelName = styled.div`

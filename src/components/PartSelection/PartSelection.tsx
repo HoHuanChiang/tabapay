@@ -3,12 +3,14 @@ import {
     StyledLinkContainer,
     StyledLinkGroupContainer,
     StyledOuterContainer,
+    StyledTitle,
 } from "./PartSelection.styled";
 import { Link } from "react-router-dom";
 
 const PartSelection = () => {
     return (
         <StyledOuterContainer>
+            <StyledTitle>Take Home Project - TabaPay</StyledTitle>
             <StyledLinkGroupContainer>
                 <Link to="/part1">
                     <StyledLinkContainer>Part 1</StyledLinkContainer>

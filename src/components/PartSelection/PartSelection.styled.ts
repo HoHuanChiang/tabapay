@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
 export const StyledOuterContainer = styled.div`
-    height: 100%;
+    height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+`;
+export const StyledTitle = styled.div`
+    font-weight: bold;
+    margin: 20px 0;
+    font-size: 20px;
 `;
 
 export const StyledLinkGroupContainer = styled.div`
@@ -18,10 +24,6 @@ export const StyledLinkGroupContainer = styled.div`
         color: black;
         width: 100%;
     }
-
-    & > a:not(:last-of-type) {
-        border-bottom: 1px solid black;
-    }
 `;
 
 export const StyledLinkContainer = styled.div`
@@ -30,8 +32,14 @@ export const StyledLinkContainer = styled.div`
     text-align: center;
     box-sizing: border-box;
     cursor: pointer;
+    border: 1px solid black;
+    margin: 4px 0;
+    border-radius: 10px;
+    transition: all 0.1s ease;
 
     &:hover {
         font-weight: bold;
+        background: var(--primaryColor1);
+        color: white;
     }
 `;
