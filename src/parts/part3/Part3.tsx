@@ -7,6 +7,7 @@ import {
 import MainContent from "./MainContent/MainContent";
 import { useNavigate, useParams } from "react-router-dom";
 import MainLayout from "../../components/MainLayout/MainLayout";
+import BackButton from "../../components/BackButton/BackButton";
 
 export type Part3RouteParams = {
     treeItemId?: string;
@@ -31,11 +32,10 @@ const Part3 = () => {
         }
     };
 
-    return (
-        <MainLayout
-            showHeaderFooter={false}
-            mainContent={<MainContent text={clickedTreeItemName} />}
-            navContent={
+    const renderNavContent = () => {
+        return (
+            <div>
+                <BackButton />
                 <TreeMenu
                     root={TREE_MOCK_DATA}
                     collapseSiblingOnExpand={true}
@@ -43,7 +43,15 @@ const Part3 = () => {
                     onTreeItemClick={onTreeItemClick}
                     initialSelectedTreeItemId={getInitialSelectedTreeItemId()}
                 />
-            }
+            </div>
+        );
+    };
+
+    return (
+        <MainLayout
+            showHeaderFooter={false}
+            mainContent={<MainContent text={clickedTreeItemName} />}
+            navContent={renderNavContent()}
         />
     );
 };

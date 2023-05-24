@@ -7,6 +7,7 @@ export const BackButtonContainer = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-bottom: 20px;
 
     &::before {
         content: "<<";
