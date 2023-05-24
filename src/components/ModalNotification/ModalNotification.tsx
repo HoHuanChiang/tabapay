@@ -12,12 +12,19 @@ interface ModalNotificationProps {
 }
 
 interface NotificationContextState {
-    pushNotification: (text: string) => void;
+    pushNotification: (text: string, type: NotificationType) => void;
 }
 
 interface NotificationItem {
     message: string;
     id: number;
+    type: NotificationType;
+}
+
+export enum NotificationType {
+    Info = 0,
+    Success = 1,
+    Error = 2,
 }
 
 export const NotificationContext =
@@ -38,15 +45,19 @@ const ModalNotification = (props: ModalNotificationProps) => {
         return id;
     };
 
-    const generateNotificationItem = (message: string): NotificationItem => {
+    const generateNotificationItem = (
+        message: string,
+        type: NotificationType
+    ): NotificationItem => {
         return {
             message: message,
             id: generateNotificationId(),
+            type: type,
         };
     };
 
-    const pushNotification = (message: string) => {
-        const notificationItem = generateNotificationItem(message);
+    const pushNotification = (message: string, type: NotificationType) => {
+        const notificationItem = generateNotificationItem(message, type);
         setNotifications([...notifications, notificationItem]);
         setDismissTimer(notificationItem.id);
     };
@@ -70,14 +81,31 @@ const ModalNotification = (props: ModalNotificationProps) => {
         pushNotification: pushNotification,
     };
 
+    const getBackgroundColor = (type: NotificationType) => {
+        switch (type) {
+            case NotificationType.Info:
+                return "var(--modal-info-color)";
+            case NotificationType.Success:
+                return "var(--modal-success-color)";
+            case NotificationType.Error:
+                return "var(--modal-error-color)";
+        }
+        return "black";
+    };
+
     return (
         <NotificationContext.Provider value={notificationContextState}>
             <StyledNotificationGroupContainer>
                 {notifications.map((notification, index) => {
                     return (
-                        <StyledModalNotificationContainer key={index}>
+                        <StyledModalNotificationContainer
+                            key={index}
+                            backgroundColor={getBackgroundColor(
+                                notification.type
+                            )}
+                        >
                             <StyledNotificationContent>
-                                {notification.id}
+                                {notification.message}
                             </StyledNotificationContent>
                             <StyledCloseButton
                                 onClick={() =>

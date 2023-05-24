@@ -1,19 +1,25 @@
 import styled from "styled-components";
 
+interface ModalNotificationStyledProps {
+    backgroundColor: string;
+}
+
 export const StyledNotificationGroupContainer = styled.div`
     position: absolute;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 0;
+    right: 20px;
     min-width: 300px;
     transition: all 2s ease;
     min-height: 2px;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: hidden;
 `;
 
-export const StyledModalNotificationContainer = styled.div`
+export const StyledModalNotificationContainer = styled.div<ModalNotificationStyledProps>`
     width: 100%;
     box-sizing: border-box;
-    margin: 18px 0;
+    margin: 10px 0;
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
@@ -22,14 +28,16 @@ export const StyledModalNotificationContainer = styled.div`
     position: relative;
     display: flex;
     align-items: center;
+    background: ${(props) => props.backgroundColor};
+    color: white;
 
     @keyframes fadeIn {
         0% {
-            transform: translateY(-30px);
+            transform: translateX(100%);
             opacity: 0;
         }
         100% {
-            transform: translateY(0);
+            transform: translateX(0);
             opacity: 1;
         }
     }
@@ -51,7 +59,7 @@ export const StyledCloseButton = styled.div`
         position: absolute;
         height: 1px;
         width: 100%;
-        background: black;
+        background: white;
         top: 50%;
         left: 50%;
         transition: all 0.2s ease;

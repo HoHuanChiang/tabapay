@@ -9,4 +9,9 @@ body {
   --primaryColor3: #d9d9d9;
   --primaryColor4: #d9b310;
   --primaryColor5: #1d2731;
+
+
+  --modal-info-color: rgba(44, 168, 255, 0.8);
+  --modal-success-color: rgba(24, 206, 15, 0.8);
+  --modal-error-color: rgba(255, 54, 54, 0.8);
 }
