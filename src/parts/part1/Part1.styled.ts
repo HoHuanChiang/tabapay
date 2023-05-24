@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledPartOuterContainer = styled.div`
     width: 100%;
     display: flex;
+    flex-direction: column;
 `;
 export const StyledPartInnerContainer = styled.div`
     margin: 20px auto;

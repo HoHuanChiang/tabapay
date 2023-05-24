@@ -8,6 +8,7 @@ import {
     TreeMenuContainer,
 } from "./Part1.styled";
 import Toggle from "../../components/Toggle/Toggle";
+import BackButton from "../../components/BackButton/BackButton";
 
 const Part1 = () => {
     const [collapseSibing, setCollapseSibling] = React.useState<boolean>(true);
@@ -16,6 +17,7 @@ const Part1 = () => {
 
     return (
         <StyledPartOuterContainer>
+            <BackButton />
             <StyledPartInnerContainer>
                 <StyledPartTitle>Part 1</StyledPartTitle>
                 <div>
