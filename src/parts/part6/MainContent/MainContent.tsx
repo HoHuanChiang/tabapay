@@ -1,13 +1,13 @@
 import React from "react";
 import { APIRequest, GetImageUrl } from "../../../api/api";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Part3RouteParams } from "../../part3/Part3";
 import { Destination, Location } from "../../../api/api.models";
 import {
     StyledCustomCardContentContainer,
-    StyledDivider,
     StyledImageSelectionContainer,
     StyledInfo,
+    StyledMainContainer,
     StyledParagraph,
     StyledSelectionCardContainer,
     StyledTitle,
@@ -16,10 +16,19 @@ import SelectionCard from "../../../components/SelectionCard/SelectionCard";
 import { CardInfo } from "../../../components/CollapsibleCardList/CollapsibleCard/CollapsibleCard.util";
 import ImageSelection from "../../../components/ImageSelection/ImageSelection";
 
-const MainContent = () => {
+interface MainContentProps {
+    defaultTreeItemId?: number;
+}
+
+const MainContent = (props: MainContentProps) => {
     const { treeItemId } = useParams<Part3RouteParams>();
     const [destination, setDestination] = React.useState<Destination>();
-    const [selectedLocation, setSelectedLocation] = React.useState<Location>();
+    const navigate = useNavigate();
+    React.useEffect(() => {
+        if (!treeItemId && props.defaultTreeItemId) {
+            navigate(`/part6/${props.defaultTreeItemId}`, { replace: true });
+        }
+    }, [props.defaultTreeItemId]);
 
     React.useEffect(() => {
         if (treeItemId && !isNaN(parseInt(treeItemId))) {
@@ -34,17 +43,6 @@ const MainContent = () => {
             getDestinationDetails().catch(console.error);
         }
     }, [treeItemId]);
-
-    const onHeaderClick = (card: CardInfo) => {
-        if (destination) {
-            const foundLocation = destination.locations.find(
-                (x) => x.id === card.id
-            );
-            if (foundLocation) {
-                setSelectedLocation({ ...foundLocation });
-            }
-        }
-    };
 
     const getCards = (): CardInfo[] => {
         if (destination && destination.locations) {
@@ -90,19 +88,18 @@ const MainContent = () => {
     };
 
     if (!destination) {
-        return <div></div>;
+        return (
+            <StyledMainContainer>Please pick a destination</StyledMainContainer>
+        );
     }
 
     return (
-        <div>
-            <StyledSelectionCardContainer>
-                <SelectionCard
-                    cards={getCards()}
-                    onHeaderClick={onHeaderClick}
-                    onRenderContent={renderCardContent}
-                />
-            </StyledSelectionCardContainer>
-        </div>
+        <StyledSelectionCardContainer>
+            <SelectionCard
+                cards={getCards()}
+                onRenderContent={renderCardContent}
+            />
+        </StyledSelectionCardContainer>
     );
 };
 

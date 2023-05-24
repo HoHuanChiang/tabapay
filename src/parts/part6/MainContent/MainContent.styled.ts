@@ -34,9 +34,11 @@ export const StyledSelectionCardContainer = styled.div`
     padding: 30px 0;
 `;
 
-export const StyledDivider = styled.div`
-    width: 100%;
-    height: 2px;
-    background: var(--primaryColor1);
-    margin-bottom: 30px;
+export const StyledMainContainer = styled.div`
+    min-height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
 `;

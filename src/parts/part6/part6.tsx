@@ -50,10 +50,30 @@ const Part6 = () => {
         return undefined;
     };
 
+    const getDefaultTreeItemId = (folder?: TreeFolder): number | undefined => {
+        // find first tree item
+        if (folder && folder.items && folder.items.length > 0) {
+            return folder.items[0].id;
+        }
+
+        if (folder && folder.subFolders) {
+            for (let i = 0; i < folder.subFolders.length; i++) {
+                const firstId = getDefaultTreeItemId(folder.subFolders[i]);
+                if (firstId) {
+                    return firstId;
+                }
+            }
+        }
+    };
+
     return (
         <MainLayout
             showHeaderFooter={true}
-            mainContent={<MainContent />}
+            mainContent={
+                <MainContent
+                    defaultTreeItemId={getDefaultTreeItemId(rootFolder)}
+                />
+            }
             navContent={getTreeMenu()}
         />
     );
