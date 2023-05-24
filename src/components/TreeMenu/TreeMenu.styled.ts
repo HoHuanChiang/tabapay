@@ -12,6 +12,7 @@ export interface TreeMenuIconProps {
     iconContent: string;
     isExpand: boolean;
     expandOnRotate?: boolean;
+    isSelected?: boolean;
 }
 
 export const StyledSubFolderContainer = styled.div<TreeMenuBaseStyledProps>`
@@ -40,6 +41,7 @@ export const StyledArrow = styled.div<TreeMenuIconProps>`
     display: flex;
     align-items: center;
     margin-right: 5px;
+    color: ${(props) => (props.isSelected ? "var(--primaryColor2)" : "black")};
 
     &::before {
         content: "${(props) => props.iconContent}";
@@ -53,4 +55,6 @@ export const StyledArrow = styled.div<TreeMenuIconProps>`
 
 export const StyledTreeNameContainer = styled.div<TreeItemStyledProps>`
     font-weight: ${(props) => (props.isSelected ? "bold" : "normal")};
+    text-decoration: ${(props) => (props.isSelected ? "underline" : "none")};
+    font-style: ${(props) => (props.isSelected ? "italic" : "none")};
 `;

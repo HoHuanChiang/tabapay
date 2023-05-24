@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 import { Part3RouteParams } from "../../part3/Part3";
 import { Destination, Location } from "../../../api/api.models";
 import {
+    StyledCustomCardContentContainer,
+    StyledDivider,
     StyledImageSelectionContainer,
     StyledInfo,
     StyledParagraph,
-    StyledThumbnailContainer,
+    StyledSelectionCardContainer,
     StyledTitle,
 } from "./MainContent.styled";
 import SelectionCard from "../../../components/SelectionCard/SelectionCard";
@@ -61,7 +63,8 @@ const MainContent = () => {
     const renderCardContent = (card: CardInfo) => {
         const location = card.data as Location;
         return (
-            <div>
+            <StyledCustomCardContentContainer>
+                <StyledTitle>{`${destination?.name}-${location.name}`}</StyledTitle>
                 <StyledImageSelectionContainer>
                     <ImageSelection
                         imageUrls={location.imageUrls.map((imageUrl) =>
@@ -82,7 +85,7 @@ const MainContent = () => {
                 {location.description.split("\r\n").map((paragraph) => (
                     <StyledParagraph>{paragraph}</StyledParagraph>
                 ))}
-            </div>
+            </StyledCustomCardContentContainer>
         );
     };
 
@@ -92,11 +95,13 @@ const MainContent = () => {
 
     return (
         <div>
-            <SelectionCard
-                cards={getCards()}
-                onHeaderClick={onHeaderClick}
-                onRenderContent={renderCardContent}
-            />
+            <StyledSelectionCardContainer>
+                <SelectionCard
+                    cards={getCards()}
+                    onHeaderClick={onHeaderClick}
+                    onRenderContent={renderCardContent}
+                />
+            </StyledSelectionCardContainer>
         </div>
     );
 };

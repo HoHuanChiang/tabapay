@@ -107,7 +107,7 @@ const TreeMenu = (props: TreeMenuProps) => {
                                     <StyledArrow
                                         isExpand={folder.isExpand}
                                         iconContent={"◉"}
-                                        expandOnRotate={true}
+                                        isSelected={item.isSelected}
                                     />
                                     <StyledTreeNameContainer
                                         isSelected={item.isSelected}

@@ -1,4 +1,12 @@
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Helvetica;
+}
+
+:root {
+  --primaryColor1: #0b3c5d;
+  --primaryColor2: #0475b4;
+  --primaryColor3: #d9d9d9;
+  --primaryColor4: #d9b310;
+  --primaryColor5: #1d2731;
 }

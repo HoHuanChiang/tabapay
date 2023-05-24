@@ -6,7 +6,6 @@ import {
     StyledImageNavbar,
     StyledImageSelectionContainer,
 } from "./ImageSelection.styled";
-import { GetImageUrl } from "../../api/api";
 
 interface ImageSelectionProps {
     imageUrls: string[];
@@ -15,6 +14,10 @@ interface ImageSelectionProps {
 const ImageSelection = (props: ImageSelectionProps) => {
     const [selectedImageIndex, setSelectedImageIndex] =
         React.useState<number>(0);
+
+    React.useEffect(() => {
+        setSelectedImageIndex(0);
+    }, [JSON.stringify(props.imageUrls)]);
 
     const onCompressImageClick = (index: number) => {
         setSelectedImageIndex(index);
@@ -26,6 +29,7 @@ const ImageSelection = (props: ImageSelectionProps) => {
                 <StyledCompressedImage
                     src={imageUrl}
                     onClick={() => onCompressImageClick(index)}
+                    isSelected={index === selectedImageIndex}
                 />
             );
         });
@@ -40,10 +44,10 @@ const ImageSelection = (props: ImageSelectionProps) => {
 
     return (
         <StyledImageSelectionContainer>
-            <StyledImageNavbar>{renderNavbar()}</StyledImageNavbar>
             <StyledImageContentContainer>
                 {renderContent()}
             </StyledImageContentContainer>
+            <StyledImageNavbar>{renderNavbar()}</StyledImageNavbar>
         </StyledImageSelectionContainer>
     );
 };

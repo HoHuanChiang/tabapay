@@ -5,6 +5,7 @@ import {
     StyledSelectionContent,
     StyledSelectionNarbarItem,
     StyledSelectionNavbar,
+    StyledSelectionNavbarItemDivider,
 } from "./SelectionCard.styled";
 import { assignIdtoCards } from "./SelectionCard.util";
 
@@ -38,6 +39,7 @@ const SelectionCard = (props: SelectionCardProps) => {
                     onClick={() => onCategoryHeaderClick(card)}
                     isSelected={selectedCardId === card.id}
                 >
+                    <StyledSelectionNavbarItemDivider />
                     {card.headerName}
                 </StyledSelectionNarbarItem>
             );

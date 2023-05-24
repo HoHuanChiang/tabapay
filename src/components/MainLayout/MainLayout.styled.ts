@@ -16,10 +16,10 @@ export const StyledMainHeaderContainer = styled.div<MainLayoutStyledProps>`
     left: 0;
     width: 100%;
     display: ${(props) => (props.showHeaderFooter ? "flex" : "none")};
-    border-bottom: 1px solid black;
     align-items: center;
     justify-content: center;
-    background: white;
+    background: var(--primaryColor5);
+    color: white;
     z-index: 2;
 
     img {
@@ -56,6 +56,7 @@ export const StyledMainContentContainer = styled.div<MainLayoutStyledProps>`
     min-height: ${(props) =>
         props.showHeaderFooter ? "calc(100vh - 120px)" : "100vh"};
     position: relative;
+    margin-bottom: ${(props) => (props.showHeaderFooter ? "60px" : "0")};
 `;
 
 export const StyledMainFooterContainer = styled.div<MainLayoutStyledProps>`
@@ -68,7 +69,8 @@ export const StyledMainFooterContainer = styled.div<MainLayoutStyledProps>`
     border-top: 1px solid black;
     align-items: center;
     justify-content: center;
-    background: white;
+    color: white;
+    background: var(--primaryColor5);
     z-index: 2;
 
     &>span: first-of-type {
@@ -77,5 +79,9 @@ export const StyledMainFooterContainer = styled.div<MainLayoutStyledProps>`
 
     & > span {
         margin: 0 20px;
+    }
+
+    a {
+        color: white;
     }
 `;
