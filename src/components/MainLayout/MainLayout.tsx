@@ -39,7 +39,9 @@ const MainLayout = (props: MainLayoutProps) => {
                         <img src={require("../../images/logo.png")} />
                     </Link>
                 </StyledMiniHeader>
-                <StyledNavigationContentContainer>
+                <StyledNavigationContentContainer
+                    showHeaderFooter={props.showHeaderFooter}
+                >
                     {props.navContent}
                 </StyledNavigationContentContainer>
             </StyledMainNavigationContainer>

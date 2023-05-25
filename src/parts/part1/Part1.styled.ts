@@ -8,10 +8,16 @@ export const StyledPartOuterContainer = styled.div`
 export const StyledPartInnerContainer = styled.div`
     margin: 20px auto;
     min-width: 300px;
+    padding: 20px;
+    color: white;
+    background: var(--primaryColor1);
+    border-radius: 10px;
 `;
 
 export const TreeMenuContainer = styled.div`
     border: 1px solid black;
     padding: 10px;
     border-radius: 10px;
+    background: white;
+    color: black;
 `;

@@ -49,8 +49,12 @@ export const StyledMainNavigationContainer = styled.div<MainLayoutStyledProps>`
     border-right: 1px solid black;
 `;
 
-export const StyledNavigationContentContainer = styled.div`
+export const StyledNavigationContentContainer = styled.div<MainLayoutStyledProps>`
     padding: 15px;
+    box-sizing: border-box;
+    height: ${(props) =>
+        props.showHeaderFooter ? "calc(100% - 120px)" : "100%"};
+    overflow: auto;
 `;
 
 export const StyledMainContentContainer = styled.div<MainLayoutStyledProps>`

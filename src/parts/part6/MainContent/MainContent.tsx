@@ -5,9 +5,10 @@ import { Part3RouteParams } from "../../part3/Part3";
 import { Destination, Location } from "../../../api/api.models";
 import {
     StyledCustomCardContentContainer,
+    StyledErrorContainer,
     StyledImageSelectionContainer,
     StyledInfo,
-    StyledMainContainer,
+    StyledMainNoDataContainer,
     StyledParagraph,
     StyledSelectionCardContainer,
     StyledTitle,
@@ -23,6 +24,7 @@ interface MainContentProps {
 const MainContent = (props: MainContentProps) => {
     const { treeItemId } = useParams<Part3RouteParams>();
     const [destination, setDestination] = React.useState<Destination>();
+    const [error, setError] = React.useState<string>("");
     const navigate = useNavigate();
     React.useEffect(() => {
         if (!treeItemId && props.defaultTreeItemId) {
@@ -40,7 +42,9 @@ const MainContent = (props: MainContentProps) => {
                 setDestination(destination);
             };
 
-            getDestinationDetails().catch(console.error);
+            getDestinationDetails().catch((err) => {
+                setError(err.message);
+            });
         }
     }, [treeItemId]);
 
@@ -87,9 +91,15 @@ const MainContent = (props: MainContentProps) => {
         );
     };
 
+    if (error) {
+        return <StyledErrorContainer>{error}</StyledErrorContainer>;
+    }
+
     if (!destination) {
         return (
-            <StyledMainContainer>Please pick a destination</StyledMainContainer>
+            <StyledMainNoDataContainer>
+                Please pick a destination
+            </StyledMainNoDataContainer>
         );
     }
 

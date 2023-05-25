@@ -34,11 +34,21 @@ export const StyledSelectionCardContainer = styled.div`
     padding: 30px 0;
 `;
 
-export const StyledMainContainer = styled.div`
+export const StyledMainNoDataContainer = styled.div`
     min-height: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     font-size: 18px;
+`;
+
+export const StyledErrorContainer = styled.div`
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background: var(--modal-error-color);
+    font-weight: bold;
 `;
