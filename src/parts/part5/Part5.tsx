@@ -16,6 +16,8 @@ const Part5 = () => {
                     highlightOnTreeItemClick={true}
                 />
             }
+            stickHeader={true}
+            stickFooter={false}
         />
     );
 };

@@ -10,6 +10,8 @@ export const StyledCardContainer = styled.div`
     overflow: hidden;
     border: 1px solid black;
     padding: 0 15px;
+    background: var(--primaryColor1);
+    color: white;
 `;
 
 export const StyledCardHeader = styled.div`
@@ -56,7 +58,7 @@ export const StyledCardExpandIcon = styled.div<CollapsibleCardStyledProps>`
         transition: transform 0.2s ease;
         width: 100%;
         height: 2px;
-        background: black;
+        background: white;
         top: 50%;
         left: 0;
         transform: translateY(-50%);

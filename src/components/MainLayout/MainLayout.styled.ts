@@ -62,6 +62,7 @@ export const StyledMainContentContainer = styled.div<MainLayoutStyledProps>`
     position: relative;
     margin-bottom: ${(props) =>
         props.showHeaderFooter && props.stickFooter ? "60px" : "0"};
+    overflow: auto;
 `;
 
 export const StyledMainFooterContainer = styled.div<MainLayoutStyledProps>`
