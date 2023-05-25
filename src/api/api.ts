@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Destination, Folder } from "./api.models";
 
-const API_ENDPOINT_BASE_URL = "http://localhost:8080";
+const API_ENDPOINT_BASE_URL = "https://tabapay-backend.herokuapp.com";
 
 enum ApiPath {
     GetRootFolder = "/folder/root",
