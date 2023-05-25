@@ -15,6 +15,14 @@ const Part1 = () => {
     const [collapseSibingAndSubFolders, setCollaseSiblingAndSubFolders] =
         React.useState<boolean>(false);
 
+    const onCollaseSiblingAndSubFoldersChange = (isOpen: boolean) => {
+        if (isOpen) {
+            setCollapseSibling(isOpen);
+        }
+
+        setCollaseSiblingAndSubFolders(isOpen);
+    };
+
     return (
         <StyledPartOuterContainer>
             <BackButton />
@@ -28,8 +36,8 @@ const Part1 = () => {
                     />
                     <Toggle
                         isOpen={collapseSibingAndSubFolders}
-                        onToggleUpdate={setCollaseSiblingAndSubFolders}
-                        label={"Sibling Collapse and Nested Collapse"}
+                        onToggleUpdate={onCollaseSiblingAndSubFoldersChange}
+                        label={"Sibling Collapse + Nested Collapse"}
                     />
                 </div>
                 <TreeMenuContainer>
