@@ -5,6 +5,8 @@ import {
     StyledMainHeaderContainer,
     StyledMainLayoutContainer,
     StyledMainNavigationContainer,
+    StyledMiniHeader,
+    StyledNavigationContentContainer,
 } from "./MainLayout.styled";
 import { Link } from "react-router-dom";
 
@@ -12,6 +14,8 @@ interface MainLayoutProps {
     showHeaderFooter?: boolean;
     mainContent?: JSX.Element;
     navContent?: JSX.Element;
+    stickHeader?: boolean;
+    stickFooter?: boolean;
 }
 
 const MainLayout = (props: MainLayoutProps) => {
@@ -19,6 +23,7 @@ const MainLayout = (props: MainLayoutProps) => {
         <StyledMainLayoutContainer>
             <StyledMainHeaderContainer
                 showHeaderFooter={props.showHeaderFooter}
+                stickHeader={props.stickHeader}
             >
                 <Link to={"/"}>
                     <img src={require("../../images/logo.png")} />
@@ -27,16 +32,26 @@ const MainLayout = (props: MainLayoutProps) => {
             </StyledMainHeaderContainer>
             <StyledMainNavigationContainer
                 showHeaderFooter={props.showHeaderFooter}
+                stickHeader={props.stickHeader}
             >
-                {props.navContent}
+                <StyledMiniHeader>
+                    <Link to={"/"}>
+                        <img src={require("../../images/logo.png")} />
+                    </Link>
+                </StyledMiniHeader>
+                <StyledNavigationContentContainer>
+                    {props.navContent}
+                </StyledNavigationContentContainer>
             </StyledMainNavigationContainer>
             <StyledMainContentContainer
                 showHeaderFooter={props.showHeaderFooter}
+                stickFooter={props.stickFooter}
             >
                 {props.mainContent}
             </StyledMainContentContainer>
             <StyledMainFooterContainer
                 showHeaderFooter={props.showHeaderFooter}
+                stickFooter={props.stickFooter}
             >
                 <span>Ho-Huan (Lars) Chiang</span>
                 <span>chianglars@gmail.com</span>

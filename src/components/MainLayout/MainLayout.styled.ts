@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 interface MainLayoutStyledProps {
     showHeaderFooter?: boolean;
+    stickHeader?: boolean;
+    stickFooter?: boolean;
 }
 
 export const StyledMainLayoutContainer = styled.div`
@@ -11,7 +13,7 @@ export const StyledMainLayoutContainer = styled.div`
 
 export const StyledMainHeaderContainer = styled.div<MainLayoutStyledProps>`
     height: 60px;
-    position: fixed;
+    position: ${(props) => (props.stickHeader ? "fixed" : "absolute")};
     top: 0;
     left: 0;
     width: 100%;
@@ -39,14 +41,16 @@ export const StyledMainHeaderContainer = styled.div<MainLayoutStyledProps>`
 
 export const StyledMainNavigationContainer = styled.div<MainLayoutStyledProps>`
     position: fixed;
-    top: ${(props) => (props.showHeaderFooter ? "60px" : "0")};
+    top: 0;
     left: 0;
-    height: ${(props) =>
-        props.showHeaderFooter ? "calc(100vh - 120px)" : "100%"};
     width: 300px;
-    padding: 15px;
+    height: 100%;
     box-sizing: border-box;
     border-right: 1px solid black;
+`;
+
+export const StyledNavigationContentContainer = styled.div`
+    padding: 15px;
 `;
 
 export const StyledMainContentContainer = styled.div<MainLayoutStyledProps>`
@@ -56,11 +60,12 @@ export const StyledMainContentContainer = styled.div<MainLayoutStyledProps>`
     min-height: ${(props) =>
         props.showHeaderFooter ? "calc(100vh - 120px)" : "100vh"};
     position: relative;
-    margin-bottom: ${(props) => (props.showHeaderFooter ? "60px" : "0")};
+    margin-bottom: ${(props) =>
+        props.showHeaderFooter && props.stickFooter ? "60px" : "0"};
 `;
 
 export const StyledMainFooterContainer = styled.div<MainLayoutStyledProps>`
-    position: fixed;
+    position: ${(props) => (props.stickFooter ? "fixed" : "relative")};
     bottom: 0;
     left: 0;
     height: 60px;
@@ -72,6 +77,7 @@ export const StyledMainFooterContainer = styled.div<MainLayoutStyledProps>`
     color: white;
     background: var(--primaryColor5);
     z-index: 2;
+    box-sizing: border-box;
 
     &>span: first-of-type {
         font-weight: bold;
@@ -83,5 +89,20 @@ export const StyledMainFooterContainer = styled.div<MainLayoutStyledProps>`
 
     a {
         color: white;
+    }
+`;
+
+export const StyledMiniHeader = styled.div`
+    background: var(--primaryColor5);
+    height: 60px;
+    position: relative;
+
+    img {
+        height: 100%;
+        object-fit: contain;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 20px;
     }
 `;

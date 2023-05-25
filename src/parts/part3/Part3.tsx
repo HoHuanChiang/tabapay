@@ -32,10 +32,11 @@ const Part3 = () => {
         }
     };
 
-    const renderNavContent = () => {
-        return (
-            <div>
-                <BackButton />
+    return (
+        <MainLayout
+            showHeaderFooter={false}
+            mainContent={<MainContent text={clickedTreeItemName} />}
+            navContent={
                 <TreeMenu
                     root={TREE_MOCK_DATA}
                     collapseSiblingOnExpand={true}
@@ -43,15 +44,7 @@ const Part3 = () => {
                     onTreeItemClick={onTreeItemClick}
                     initialSelectedTreeItemId={getInitialSelectedTreeItemId()}
                 />
-            </div>
-        );
-    };
-
-    return (
-        <MainLayout
-            showHeaderFooter={false}
-            mainContent={<MainContent text={clickedTreeItemName} />}
-            navContent={renderNavContent()}
+            }
         />
     );
 };
