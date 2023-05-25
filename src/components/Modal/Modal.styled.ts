@@ -17,7 +17,6 @@ export const StyledMaskContainer = styled.div<ModalStyledProps>`
 
 export const StyledModalOuterContainer = styled.div<ModalStyledProps>`
     transition: all 0.3s ease;
-    background: green;
     opacity: ${(props) => (props.isOpen ? 1 : 0)};
 `;
 
@@ -31,6 +30,7 @@ export const StyledModalContainer = styled.div<ModalStyledProps>`
     border-radius: 10px;
     overflow: hidden;
     display: ${(props) => (props.isOpen ? "block" : "none")};
+    border: 4px solid var(--primaryColor1);
 `;
 
 export const StyledModalContent = styled.div`
@@ -39,14 +39,16 @@ export const StyledModalContent = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: black;
 `;
 
 export const StyledModalHeader = styled.div`
     height: 30px;
     background: white;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--primaryColor1);
     padding: 10px 5px;
     position: relative;
+    color: black;
 `;
 
 export const StyledModalHeaderTitle = styled.span`
@@ -76,7 +78,7 @@ export const StyledCloseButton = styled.button`
     &::after {
         content: "";
         position: absolute;
-        background: black;
+        background: var(--primaryColor1);
         height: 2px;
         transform-origin: left;
         border-radius: 10px;

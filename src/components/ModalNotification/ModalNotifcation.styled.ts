@@ -21,7 +21,6 @@ export const StyledModalNotificationContainer = styled.div<ModalNotificationStyl
     box-sizing: border-box;
     margin: 10px 0;
     padding: 10px;
-    border: 1px solid black;
     border-radius: 10px;
     animation: fadeIn 0.3s ease;
     text-align: center;

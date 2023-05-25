@@ -23,7 +23,7 @@ const Modal = (props: ModalProps) => {
 
     return (
         <StyledModalOuterContainer isOpen={props.isOpen}>
-            <StyledMaskContainer isOpen={props.isOpen} />
+            <StyledMaskContainer isOpen={props.isOpen} onClick={onClose} />
             <StyledModalContainer isOpen={props.isOpen}>
                 <StyledModalHeader>
                     <StyledModalHeaderTitle>
