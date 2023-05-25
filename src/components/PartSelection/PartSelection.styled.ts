@@ -8,9 +8,16 @@ export const StyledOuterContainer = styled.div`
     align-items: center;
     flex-direction: column;
 `;
+
+export const StyledInnerContainer = styled.div`
+    border: 10px solid var(--primaryColor1);
+    padding: 40px;
+    border-radius: 10px;
+`;
+
 export const StyledTitle = styled.div`
     font-weight: bold;
-    margin: 20px 0;
+    margin-bottom: 20px;
     font-size: 20px;
 `;
 
@@ -32,7 +39,7 @@ export const StyledLinkContainer = styled.div`
     text-align: center;
     box-sizing: border-box;
     cursor: pointer;
-    border: 1px solid black;
+    border: 2px solid var(--primaryColor1);
     margin: 4px 0;
     border-radius: 10px;
     transition: all 0.1s ease;
