@@ -26,6 +26,7 @@ const MainContent = (props: MainContentProps) => {
     const { treeItemId } = useParams<Part3RouteParams>();
     const [destination, setDestination] = React.useState<Destination>();
     const [error, setError] = React.useState<string>("");
+
     const navigate = useNavigate();
     React.useEffect(() => {
         if (!treeItemId && props.defaultTreeItemId) {
@@ -99,11 +100,7 @@ const MainContent = (props: MainContentProps) => {
     }
 
     if (!destination) {
-        return (
-            <StyledMainNoDataContainer>
-                Please pick a destination
-            </StyledMainNoDataContainer>
-        );
+        return <StyledMainNoDataContainer>Loading</StyledMainNoDataContainer>;
     }
 
     return (
