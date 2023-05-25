@@ -75,6 +75,8 @@ const Part6 = () => {
                 />
             }
             navContent={getTreeMenu()}
+            stickHeader={true}
+            stickFooter={false}
         />
     );
 };
