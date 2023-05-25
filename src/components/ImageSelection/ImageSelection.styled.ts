@@ -55,6 +55,7 @@ export const StyledCompressedImage = styled.img<ImageSelectionStyledProps>`
     border: ${(props) =>
         props.isSelected ? "3px solid var(--primaryColor1)" : "none"};
     box-sizing: border-box;
+    object-fit: cover;
 `;
 
 export const StyledDisplayImage = styled.img`
