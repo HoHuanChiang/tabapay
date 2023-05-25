@@ -84,7 +84,15 @@ const MainContent = (props: MainContentProps) => {
                     </StyledInfo>
                     <StyledInfo>
                         <span>Website:</span>
-                        <span>{location.website}</span>
+                        <span>
+                            <a
+                                href={location.website}
+                                target={"_blank"}
+                                rel={"noopener noreferrer"}
+                            >
+                                {location.website}
+                            </a>
+                        </span>
                     </StyledInfo>
                 </div>
                 {location.description.split("\r\n").map((paragraph) => (
