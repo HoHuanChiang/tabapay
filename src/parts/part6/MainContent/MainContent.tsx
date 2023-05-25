@@ -16,6 +16,7 @@ import {
 import SelectionCard from "../../../components/SelectionCard/SelectionCard";
 import { CardInfo } from "../../../components/CollapsibleCardList/CollapsibleCard/CollapsibleCard.util";
 import ImageSelection from "../../../components/ImageSelection/ImageSelection";
+import { Path } from "../../../App";
 
 interface MainContentProps {
     defaultTreeItemId?: number;
@@ -28,9 +29,11 @@ const MainContent = (props: MainContentProps) => {
     const navigate = useNavigate();
     React.useEffect(() => {
         if (!treeItemId && props.defaultTreeItemId) {
-            navigate(`/part6/${props.defaultTreeItemId}`, { replace: true });
+            navigate(`${Path.Part6}/${props.defaultTreeItemId}`, {
+                replace: true,
+            });
         }
-    }, [props.defaultTreeItemId]);
+    }, [props.defaultTreeItemId, navigate, treeItemId]);
 
     React.useEffect(() => {
         if (treeItemId && !isNaN(parseInt(treeItemId))) {

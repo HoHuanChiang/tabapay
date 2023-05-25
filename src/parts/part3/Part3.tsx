@@ -7,7 +7,7 @@ import {
 import MainContent from "./MainContent/MainContent";
 import { useNavigate, useParams } from "react-router-dom";
 import MainLayout from "../../components/MainLayout/MainLayout";
-import BackButton from "../../components/BackButton/BackButton";
+import { Path } from "../../App";
 
 export type Part3RouteParams = {
     treeItemId?: string;
@@ -20,10 +20,8 @@ const Part3 = () => {
     const navigate = useNavigate();
 
     const onTreeItemClick = (item: TreeItem) => {
-        // Set props
         setClickedTreeItemName(item.name);
-        // Set Url
-        navigate(`/part3/${item.id}`, { replace: true });
+        navigate(`${Path.Part3}/${item.id}`, { replace: true });
     };
 
     const getInitialSelectedTreeItemId = () => {

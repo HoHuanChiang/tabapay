@@ -8,6 +8,7 @@ export const StyledNotificationSettings = styled.div`
 
 export const StyledSelect = styled.select`
     height: 30px;
+    border-radius: 3px;
 `;
 
 export const StyledSelectOption = styled.option``;

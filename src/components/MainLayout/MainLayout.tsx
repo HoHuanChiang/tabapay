@@ -1,4 +1,3 @@
-import React from "react";
 import {
     StyledMainContentContainer,
     StyledMainFooterContainer,
@@ -26,7 +25,7 @@ const MainLayout = (props: MainLayoutProps) => {
                 stickHeader={props.stickHeader}
             >
                 <Link to={"/"}>
-                    <img src={require("../../images/logo.png")} />
+                    <img src={require("../../images/logo.png")} alt={"Logo"} />
                 </Link>
                 <span>Take Home Project - TabaPay</span>
             </StyledMainHeaderContainer>
@@ -36,7 +35,10 @@ const MainLayout = (props: MainLayoutProps) => {
             >
                 <StyledMiniHeader>
                     <Link to={"/"}>
-                        <img src={require("../../images/logo.png")} />
+                        <img
+                            src={require("../../images/logo.png")}
+                            alt={"Logo"}
+                        />
                     </Link>
                 </StyledMiniHeader>
                 <StyledNavigationContentContainer
@@ -61,6 +63,7 @@ const MainLayout = (props: MainLayoutProps) => {
                     <a
                         href={"https://hohuanchiang.github.io/portfolio"}
                         target={"_blank"}
+                        rel={"noopener noreferrer"}
                     >
                         https://hohuanchiang.github.io/portfolio
                     </a>

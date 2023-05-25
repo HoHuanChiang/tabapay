@@ -1,11 +1,12 @@
-import React from "react";
+import { Path } from "../../App";
 import { BackButtonContainer } from "./BackButton.styled";
 import { useNavigate } from "react-router-dom";
 
 const BackButton = () => {
     const navigate = useNavigate();
+
     const onButtonClick = () => {
-        navigate("/");
+        navigate(Path.Home);
     };
 
     return (

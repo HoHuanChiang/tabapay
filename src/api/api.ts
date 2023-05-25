@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { Destination, Folder } from "./api.models";
 
 const API_ENDPOINT_BASE_URL = "http://localhost:8080";
