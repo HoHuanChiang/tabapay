@@ -17,7 +17,7 @@ const ImageSelection = (props: ImageSelectionProps) => {
 
     React.useEffect(() => {
         setSelectedImageIndex(0);
-    }, [JSON.stringify(props.imageUrls)]);
+    }, [props.imageUrls]);
 
     const onCompressImageClick = (index: number) => {
         setSelectedImageIndex(index);

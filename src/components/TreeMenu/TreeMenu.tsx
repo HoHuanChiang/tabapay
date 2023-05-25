@@ -26,9 +26,12 @@ const TreeMenu = (props: TreeMenuProps) => {
 
     React.useEffect(() => {
         if (props.initialSelectedTreeItemId) {
-            const copyRootFolder = deepCopy(rootFolder);
-            ExpandTree(copyRootFolder, props.initialSelectedTreeItemId);
-            setRootFolder(copyRootFolder);
+            const selectedTreeItemId = props.initialSelectedTreeItemId;
+            setRootFolder((prevFolder) => {
+                const copyRootFolder = deepCopy(prevFolder);
+                ExpandTree(copyRootFolder, selectedTreeItemId);
+                return copyRootFolder;
+            });
         }
     }, [props.initialSelectedTreeItemId]);
 

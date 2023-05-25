@@ -24,7 +24,7 @@ const SelectionCard = (props: SelectionCardProps) => {
         if (props.cards.length > 0) {
             setSelectedCardId(props.cards[0].id);
         }
-    }, [JSON.stringify(props.cards)]);
+    }, [props.cards]);
 
     const onCategoryHeaderClick = (card: CardInfo) => {
         setSelectedCardId(card.id ?? 0);

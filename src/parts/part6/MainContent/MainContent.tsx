@@ -54,7 +54,6 @@ const MainContent = (props: MainContentProps) => {
 
     const getCards = (): CardInfo[] => {
         if (destination && destination.locations) {
-            console.log(destination.locations);
             return destination.locations.map((location) => {
                 return {
                     id: location.id,
