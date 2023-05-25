@@ -90,6 +90,12 @@ export const TREE_MOCK_DATA: TreeFolder = {
                             isExpand: false,
                         },
                     ],
+                    items: [
+                        {
+                            id: 7,
+                            name: "test 2-1-1 Item1",
+                        },
+                    ],
                 },
                 {
                     name: "test 2-1-2",
@@ -100,6 +106,12 @@ export const TREE_MOCK_DATA: TreeFolder = {
                             isExpand: false,
                         },
                     ],
+                },
+            ],
+            items: [
+                {
+                    id: 6,
+                    name: "test 2-1 Item1",
                 },
             ],
         },
