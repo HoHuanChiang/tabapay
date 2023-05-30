@@ -202,3 +202,20 @@ export const ConvertToTreeItem = (destination: Destination): TreeItem => {
         isSelected: false,
     };
 };
+
+export const FilterFolder = (text: string, folder: TreeFolder): boolean => {
+    if (!text) {
+        return true;
+    }
+    folder.items = folder.items?.filter(
+        (item) => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0
+    );
+
+    folder.subFolders = folder.subFolders?.filter((subFolder) =>
+        FilterFolder(text, subFolder)
+    );
+    folder.isExpand =
+        (folder.items?.length ?? 0) > 0 || (folder.subFolders?.length ?? 0) > 0;
+
+    return folder.isExpand;
+};

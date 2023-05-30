@@ -1,6 +1,7 @@
 import React from "react";
 import {
     ExpandTree,
+    FilterFolder,
     HighlightSelectedTreeItem,
     TreeFolder,
     TreeItem,
@@ -10,6 +11,7 @@ import {
     StyledTreeRow,
     StyledArrow,
     StyledTreeNameContainer,
+    StyledInput,
 } from "./TreeMenu.styled";
 
 interface TreeMenuProps {
@@ -19,10 +21,12 @@ interface TreeMenuProps {
     onTreeItemClick?: (item: TreeItem) => void;
     highlightOnTreeItemClick?: boolean;
     initialSelectedTreeItemId?: number;
+    showFilter?: boolean;
 }
 
 const TreeMenu = (props: TreeMenuProps) => {
     const [rootFolder, setRootFolder] = React.useState<TreeFolder>(props.root);
+    const [hasData, setHasData] = React.useState<boolean>(true);
 
     React.useEffect(() => {
         if (props.initialSelectedTreeItemId) {
@@ -34,6 +38,13 @@ const TreeMenu = (props: TreeMenuProps) => {
             });
         }
     }, [props.initialSelectedTreeItemId]);
+
+    const onFilterInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const copyRootFolder = deepCopy(props.root);
+        const isFound = FilterFolder(e.target.value, copyRootFolder);
+        setRootFolder(copyRootFolder);
+        setHasData(isFound);
+    };
 
     const onTreeFolderItemClick = (paths: number[]) => {
         const copyRootFolder = deepCopy(rootFolder);
@@ -90,6 +101,10 @@ const TreeMenu = (props: TreeMenuProps) => {
         depth: number,
         paths: number[]
     ) => {
+        if (!hasData) {
+            return <div>No data found</div>;
+        }
+
         return (
             <div>
                 <StyledTreeRow onClick={() => onTreeFolderItemClick(paths)}>
@@ -135,7 +150,14 @@ const TreeMenu = (props: TreeMenuProps) => {
         );
     };
 
-    return renderTreeFolder(rootFolder, 0, []);
+    return (
+        <div>
+            {props.showFilter && (
+                <StyledInput type={"text"} onChange={onFilterInputChange} />
+            )}
+            {renderTreeFolder(rootFolder, 0, [])}
+        </div>
+    );
 };
 
 export default TreeMenu;

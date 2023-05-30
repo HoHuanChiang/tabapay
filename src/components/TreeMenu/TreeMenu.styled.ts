@@ -58,3 +58,7 @@ export const StyledTreeNameContainer = styled.div<TreeItemStyledProps>`
     text-decoration: ${(props) => (props.isSelected ? "underline" : "none")};
     font-style: ${(props) => (props.isSelected ? "italic" : "none")};
 `;
+
+export const StyledInput = styled.input`
+    margin: 10px 0;
+`;

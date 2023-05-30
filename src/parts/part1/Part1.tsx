@@ -47,6 +47,7 @@ const Part1 = () => {
                         collapseSiblingSubFolderOnExpand={
                             collapseSibingAndSubFolders
                         }
+                        showFilter={true}
                     />
                 </TreeMenuContainer>
             </StyledPartInnerContainer>
