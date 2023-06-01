@@ -1,6 +1,6 @@
 # TabaPay Project
 
-Deploy Link: https://hohuanchiang.github.io/tabapay \
+Deploy Link: https://hohuanchiang.github.io/tabapay (Expires on 6/1)\
 Front-End Github Link: https://github.com/HoHuanChiang/tabapay \
 Back-End Github Link: https://github.com/HoHuanChiang/tabpay-backend
 
